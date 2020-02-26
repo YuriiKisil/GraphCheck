@@ -9,19 +9,22 @@ namespace GraphTest
         public Dictionary<string, string> points = new Dictionary<string, string>();
         [TestInitialize]
         
+        
         public void TestInitialize()
         {
             new GraphPage().OpenGraphPage();
-            new GraphPage().ToolTipsTextToDictionary(points);
+            //new GraphPage().ToolTipsTextToDictionary(points); 
+            points = new GraphPage().GetDataForTest();
         }
 
         [TestMethod]
         public void TestMethod1()
         {
             
-            new GraphPage().OpenGraphPage();
+            //new GraphPage().OpenGraphPage();
             //new GraphPage().CheckGraph(points);
-            Assert.IsTrue(new GraphPage().CheckGraph(points));
+            bool res = new GraphPage().CheckGraph(points);
+            Assert.IsTrue(res);
         }
     }
 }
