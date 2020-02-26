@@ -47,7 +47,7 @@ namespace GraphTest
                 IWebElement ToolTipDate = driver.FindElement(By.CssSelector("g.highcharts-tooltip text"));
                 //IWebElement ToolTipText = driver.FindElement(By.CssSelector("g.highcharts-tooltip text tspan:nth-child(6)"));
                 Console.WriteLine(ToolTipDate.Text);
-                //tooltips.Add(i.ToString(), ToolTipDate.Text);
+                tooltips.Add(i.ToString(), ToolTipDate.Text);
             }
 
 
@@ -58,16 +58,18 @@ namespace GraphTest
             bool res = true;
             for (int i = 7; i < 61; i++)
             {
-                int key = i-1 ;
                 Actions action = new Actions(driver);
                 action.MoveToElement(driver.FindElement(By.XPath("//*[@fill='#7cb5ec'][" + i + "]"))).Perform();
-                Thread.Sleep(2000);
+                Thread.Sleep(200);
                 IWebElement ToolTipDate = driver.FindElement(By.CssSelector("g.highcharts-tooltip text"));
-                if (points[key.ToString()] != ToolTipDate.Text)
-                {
-                    res = false;
-                    break;
-                }
+                Console.WriteLine(ToolTipDate.Text);
+            
+                //int key = i - 1;
+                //if (points[key.ToString()] != ToolTipDate.Text)
+                //{
+                //    res = false;
+                //    break;
+                //}
 
             }
             return res;
