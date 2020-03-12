@@ -17,5 +17,9 @@ namespace GraphTest
             PageFactory.InitElements(driver, this);
         }
 
+        public static void CloseDriver()
+        {
+            Browser.Driver().Quit();
+        }
     }
 }

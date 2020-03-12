@@ -7,18 +7,19 @@ namespace GraphTest
     public class UnitTest1
     {
         public Dictionary<string, string> Expectedpoints = new Dictionary<string, string>();
-      //  public Dictionary<string, string> Actualpoints = new Dictionary<string, string>();
+        public Dictionary<string, string> Actualpoints = new Dictionary<string, string>();
         public bool result = true;
-        private object driver;
-
+        public string FileName;
+      
         [TestInitialize]
 
         public void TestInitialize()
         {
-            new GraphPage().OpenGraphPage();
-            Expectedpoints = new GraphPage().GetDataForTest();
-            new GraphPage().TurnOffAllflags();
-           // new GraphPage().ToolTipsTextToDictionary(Actualpoints);
+           FileName = "ToolTipsGoogle.csv";
+           new GraphPage().OpenGraphPage();
+           Expectedpoints = new GraphPage().GetDataForTest(FileName);  
+           new GraphPage().TurnOffAditionalmarkers();
+           //new GraphPage().ToolTipsTextToDictionary(Actualpoints);
         }   
 
         [TestMethod]
